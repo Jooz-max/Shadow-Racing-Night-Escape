@@ -188,3 +188,18 @@ armorDownBtn.addEventListener('click', () => {
   if (playerData.upgrades.armor > 1) {
     playerData.upgrades.armor--;
     updateUI();
+function checkOrientation() {
+  const warning = document.getElementById("orientation-warning");
+  if (window.innerHeight > window.innerWidth) {
+    // Portrait mode
+    warning.style.display = "block";
+  } else {
+    // Landscape mode
+    warning.style.display = "none";
+  }
+}
+
+// Run on load and on resize/orientation change
+window.addEventListener("load", checkOrientation);
+window.addEventListener("resize", checkOrientation);
+window.addEventListener("orientationchange", checkOrientation);
