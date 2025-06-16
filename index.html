@@ -3,40 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Shadow Racer: Night Escape - Garage</title>
+  <title>Shadow Racer: Garage</title>
   <link rel="stylesheet" href="garage.css">
 </head>
 <body>
-  <div id="garage-container">
-    <div id="garage-canvas"></div>
 
-    <div id="hud">
-      <div id="sidebar">
-        <button onclick="openSection('character')">Character</button>
-        <button onclick="openSection('equipment')">Equipment</button>
-        <button onclick="openSection('car')">Car</button>
-        <div id="diamonds">💎 100</div>
-      </div>
-
-      <div id="mode-select">
-        <h3>Select Mode</h3>
-        <button onclick="selectMode('rank')">Rank</button>
-        <button onclick="selectMode('multiplayer')">Multiplayer</button>
-        <button onclick="selectMode('story')">Story</button>
-      </div>
-
-      <div id="main-actions">
-        <button onclick="startGame()">START</button>
-      </div>
+  <div class="garage-wrapper">
+    <!-- Diamonds Display -->
+    <div class="top-bar">
+      <div class="diamonds">💎 100</div>
     </div>
 
-    <div id="footer">
-      <span>v1.0</span>
-      <button onclick="openUpdate()">Update</button>
+    <!-- Car & Character Section -->
+    <div class="garage-display">
+      <img src="https://i.imgur.com/fz7hyyz.png" alt="Player Car" class="car">
+      <img src="https://i.imgur.com/Y6EYlgn.png" alt="Gun" class="gun">
+      <img src="https://i.imgur.com/9kz9OX5.png" alt="Character" class="character">
+    </div>
+
+    <!-- Main Menu Buttons -->
+    <div class="menu-buttons">
+      <button onclick="selectMode('story')">Story</button>
+      <button onclick="selectMode('rank')">Rank</button>
+      <button onclick="selectMode('multiplayer')">Multiplayer</button>
+      <button onclick="startGame()">Start</button>
+    </div>
+
+    <!-- Utility Buttons -->
+    <div class="bottom-panel">
+      <button>Update</button>
+      <button>Character</button>
+      <button>Equipment</button>
+      <button>Profile</button>
+      <button>Settings</button>
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="garage.js"></script>
 </body>
 </html>￼Enter
