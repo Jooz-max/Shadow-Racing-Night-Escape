@@ -1,44 +1,38 @@
 <!DOCT<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, orientation=landscape" />
   <title>Shadow Racer: Garage</title>
-  <link rel="stylesheet" href="garage.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <div class="garage-wrapper">
-    <!-- Diamonds Display -->
+  <div class="garage-container">
     <div class="top-bar">
-      <div class="diamonds">💎 100</div>
+      <h1 class="title">SHADOW RACER</h1>
+      <div class="currency">💎 100</div>
     </div>
 
-    <!-- Car & Character Section -->
-    <div class="garage-display">
-      <img src="https://i.imgur.com/fz7hyyz.png" alt="Player Car" class="car">
-      <img src="https://i.imgur.com/Y6EYlgn.png" alt="Gun" class="gun">
-      <img src="https://i.imgur.com/9kz9OX5.png" alt="Character" class="character">
-    </div>
+    <div class="garage-content">
+      <div class="character-preview">
+        <img src="character.png" alt="Character" class="character" />
+        <p>Player: Shadow_01</p>
+      </div>
 
-    <!-- Main Menu Buttons -->
-    <div class="menu-buttons">
-      <button onclick="selectMode('story')">Story</button>
-      <button onclick="selectMode('rank')">Rank</button>
-      <button onclick="selectMode('multiplayer')">Multiplayer</button>
-      <button onclick="startGame()">Start</button>
-    </div>
+      <div class="car-preview">
+        <img src="car.png" alt="Car with Gun" class="car" />
+        <p>Free Car + AK-47</p>
+      </div>
 
-    <!-- Utility Buttons -->
-    <div class="bottom-panel">
-      <button>Update</button>
-      <button>Character</button>
-      <button>Equipment</button>
-      <button>Profile</button>
-      <button>Settings</button>
+      <div class="menu-buttons">
+        <button onclick="chooseMode('story')">Story</button>
+        <button onclick="chooseMode('rank')">Rank</button>
+        <button onclick="chooseMode('multiplayer')">Multiplayer</button>
+        <button onclick="startGame()">START</button>
+      </div>
     </div>
   </div>
 
-  <script src="garage.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>￼Enter
