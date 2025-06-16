@@ -1,205 +1,71 @@
-// Basic garage functionality
+let selectedMode = null;
 
-// Default player data or load from localStorage
-let playerData = JSON.parse(localStorage.getItem('playerData')) || {
-  selectedCar: 'classic',
-  upgrades: {
-    speed: 1,
-    armor: 1,
-    ammo: 1,
-  },
-};
-
-const cars = document.querySelectorAll('.car');
-const speedLevel = document.getElementById('speed-level');
-const armorLevel = document.getElementById('armor-level');
-const ammoLevel = document.getElementById('ammo-level');
-
-const speedUpBtn = document.getElementById('speed-up');
-const speedDownBtn = document.getElementById('speed-down');
-const armorUpBtn = document.getElementById('armor-up');
-const armorDownBtn = document.getElementById('armor-down');
-const ammoUpBtn = document.getElementById('ammo-up');
-const ammoDownBtn = document.getElementById('ammo-down');
-
-const startRaceBtn = document.getElementById('start-race');
-
-function updateUI() {
-  // Highlight selected car
-  cars.forEach(car => {
-    if (car.dataset.car === playerData.selectedCar) {
-// Basic garage functionality
-
-// Default player data or load from localStorage
-let playerData = JSON.parse(localStorage.getItem('playerData')) || {
-  selectedCar: 'classic',
-  upgrades: {
-    speed: 1,
-    armor: 1,
-    ammo: 1,
-  },
-};
-
-const cars = document.querySelectorAll('.car');
-const speedLevel = document.getElementById('speed-level');
-const armorLevel = document.getElementById('armor-level');
-const ammoLevel = document.getElementById('ammo-level');
-
-const speedUpBtn = document.getElementById('speed-up');
-const speedDownBtn = document.getElementById('speed-down');
-const armorUpBtn = document.getElementById('armor-up');
-const armorDownBtn = document.getElementById('armor-down');
-const ammoUpBtn = document.getElementById('ammo-up');
-const ammoDownBtn = document.getElementById('ammo-down');
-
-const startRaceBtn = document.getElementById('start-race');
-
-function updateUI() {
-  // Highlight selected car
-  cars.forEach(car => {
-    if (car.dataset.car === playerData.selectedCar) {
-      car.classList.add('selected');
-    } else {
-      car.classList.remove('selected');
-    }
-  });
-
-  // Update upgrade levels
-  speedLevel.textContent = playerData.upgrades.speed;
-  armorLevel.textContent = playerData.upgrades.armor;
-  ammoLevel.textContent = playerData.upgrades.ammo;
+function selectMode(mode) {
+  selectedMode = mode;
+  alert(`${mode.toUpperCase()} selected! Press START to begin.`);
 }
 
-function saveData() {
-  localStorage.setItem('playerData', JSON.stringify(playerData));
-}
-
-// Car selection
-cars.forEach(car => {
-  car.addEventListener('click', () => {
-    playerData.selectedCar = car.dataset.car;
-    updateUI();
-    saveData();
-  });
-});
-
-// Upgrade buttons handlers
-speedUpBtn.addEventListener('click', () => {
-  if (playerData.upgrades.speed < 5) {
-    playerData.upgrades.speed++;
-    updateUI();
-    saveData();
+function startGame() {
+  if (!selectedMode) {
+    alert("Please select a mode before starting the game.");
+    return;
   }
-});
-speedDownBtn.addEventListener('click', () => {
-  if (playerData.upgrades.speed > 1) {
-    playerData.upgrades.speed--;
-    updateUI();
-    saveData();
-  }
-});
 
-armorUpBtn.addEventListener('click', () => {
-  if (playerData.upgrades.armor < 5) {
-    playerData.upgrades.armor++;
-    updateUI();
-    saveData();
-  }
-});
-armorDownBtn.addEventListener('click', () => {
-  if (playerData.upgrades.armor > 1) {
-    playerData.upgrades.armor--;
-    updateUI();
-    saveData();
-  }
-});
-
-ammoUpBtn.addEventListener('click', () => {
-  if (playerData.upgrades.ammo < 5) {
-    playerData.upgrades.ammo++;
-    updateUI();
-    saveData();
-  }
-});
-ammoDownBtn.addEventListener('click', () => {
-  if (playerData.upgrades.ammo > 1) {
-    playerData.upgrades.ammo--;
-    updateUI();
-    saveData();
-  }
-});
-
-// Start race button (for now, just alert)
-startRaceBtn.addEventListener('click', () => {
-  alert(`Starting race with:\nCar: ${playerData.selectedCar}\nSpeed Level: ${playerData.upgrades.speed}\nArmor Level: ${playerData.upgrades.armor}\nAmmo Level: ${playerData.upgrades.ammo}`);
-  // TODO: Load gameplay page or level here
-});
-
-// Initialize UI
-updateUI();￼Enter      car.classList.add('selected');
-    } else {
-      car.classList.remove('selected');
-    }
-  });
-
-  // Update upgrade levels
-  speedLevel.textContent = playerData.upgrades.speed;
-  armorLevel.textContent = playerData.upgrades.armor;
-  ammoLevel.textContent = playerData.upgrades.ammo;
-}
-
-function saveData() {
-  localStorage.setItem('playerData', JSON.stringify(playerData));
-}
-
-// Car selection
-cars.forEach(car => {
-  car.addEventListener('click', () => {
-    playerData.selectedCar = car.dataset.car;
-    updateUI();
-    saveData();
-  });
-});
-
-// Upgrade buttons handlers
-pBtn.addEventListener('click', () => {
-  if (playerData.upgrades.speed < 5) {
-    playerData.upgrades.speed++;
-    updateUI();
-    saveData();
-  }
-});
-speedDownBtn.addEventListener('click', () => {
-  if (playerData.upgrades.speed > 1) {
-    playerData.upgrades.speed--;
-    updateUI();
-    saveData();
-  }
-});
-
-armorUpBtn.addEventListener('click', () => {
-  if (playerData.upgrades.armor < 5) {
-    playerData.upgrades.armor++;
-    updateUI();
-    saveData();
-  }
-});
-armorDownBtn.addEventListener('click', () => {
-  if (playerData.upgrades.armor > 1) {
-    playerData.upgrades.armor--;
-    updateUI();
-function checkOrientation() {
-  const warning = document.getElementById("orientation-warning");
-  if (window.innerHeight > window.innerWidth) {
-    // Portrait mode
-    warning.style.display = "block";
-  } else {
-    // Landscape mode
-    warning.style.display = "none";
+  switch (selectedMode) {
+    case 'rank':
+      window.location.href = 'rank.html';
+      break;
+    case 'multiplayer':
+      window.location.href = 'multiplayer.html';
+      break;
+    case 'story':
+      window.location.href = 'story.html';
+      break;
   }
 }
 
-// Run on load and on resize/orientation change
-window.addEventListener("load", checkOrientation);
-window.addEventListener("resize", checkOrientation);
-window.addEventListener("orientationchange", checkOrientation);
+function openSection(section) {
+  alert(`Opening ${section} section...`);
+}
+
+function openUpdate() {
+  alert("You're running the latest version.");
+}
+
+// Basic 3D visual using Three.js
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('garage-canvas').appendChild(renderer.domElement);
+
+// Floor
+const floorGeometry = new THREE.PlaneGeometry(100, 100);
+const floorMaterial = new THREE.MeshBasicMaterial({ color: 0x202020 });
+const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+floor.rotation.x = -Math.PI / 2;
+scene.add(floor);
+
+// Car placeholder (box)
+const carGeometry = new THREE.BoxGeometry(2, 1, 4);
+const carMaterial = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const car = new THREE.Mesh(carGeometry, carMaterial);
+car.position.set(0, 0.5, 0);
+scene.add(car);
+
+// Character placeholder
+const charGeometry = new THREE.CapsuleGeometry(0.5, 1.5, 4, 8);
+const charMaterial = new THREE.MeshBasicMaterial({ color: 0xff00ff });
+const character = new THREE.Mesh(charGeometry, charMaterial);
+character.position.set(-2.5, 1, 0);
+scene.add(character);
+
+// Camera position
+camera.position.set(0, 5, 10);
+camera.lookAt(0, 0, 0);
+
+function animate() {
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+}
+animate();￼Enter
